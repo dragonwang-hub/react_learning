@@ -1,14 +1,31 @@
-import React from 'react';
-import ExpenseItemList from './components/ExpenseItemList';
-import './App.css';
+import React from "react";
+import ExpenseItemList from "./components/ExpenseItemList";
+import "./App.css";
 
 function App() {
-  const data = [{date:"2020.01.01", category: "bus", amount: "1"},
-                {date:"2021.01.01", category: "lunch", amount: "16"},
-                {date:"2022.01.01", category: "bbq", amount: "128"}]
+  const data = [
+    {
+      uuid: "1",
+      date: { year: "2020", month: "Dec", day: "12" },
+      category: "bus",
+      amount: "1",
+    },
+    {
+      uuid: "2",
+      date: { year: "2021", month: "Aug", day: "08" },
+      category: "lunch",
+      amount: "16",
+    },
+    {
+      uuid: "3",
+      date: { year: "2022", month: "May", day: "05" },
+      category: "gasline",
+      amount: "200",
+    },
+  ];
   return (
     <div className="App">
-      <ExpenseItemList data={data}/>
+      <ExpenseItemList data={data} />
     </div>
   );
 }

@@ -6,7 +6,7 @@ const ExpenseItemList = (props) => {
   return (
     <div className="expenses">
       {props.data.map((item) => (
-        <ExpenseItem item={item} />
+        <ExpenseItem key={item.uuid} item={item} />
       ))}
     </div>
   );
