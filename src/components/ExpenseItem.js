@@ -11,7 +11,7 @@ const ExpenseItem = (props) => {
       <a className="expense-item__description">
         <h2>{props.item.category}</h2>
       </a>
-      <a className="expense-item__price">{props.item.amount}</a>
+      <a className="expense-item__price">${props.item.amount}</a>
     </div>
   );
 };
