@@ -37,7 +37,7 @@ function App() {
         day: date[2],
       },
       category: newExpense.title,
-      amount: newExpense.data,
+      amount: newExpense.amount,
     };
   };
 

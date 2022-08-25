@@ -19,7 +19,7 @@ const ExpenseForm = (props) => {
     <div className="new-expense">
       <form
         className="new-expense__controls"
-        onSubmit={(event) => props.handleSubmit(event, formData)}
+        onSubmit={(event) => props.handleSubmit(event, formData)} // 使用onSubmit event应当阻止其事件的默认行为，否则将会在url后增加?符号，导致多次刷新页面
       >
         <div className="new-expense__control">
           <label htmlFor="title">Title</label>
