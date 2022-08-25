@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import ExpenseItemList from "./components/ExpenseItemList";
 import "./App.css";
+import ExpenseForm from "./components/ExpenseForm";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const data = [
@@ -23,9 +25,32 @@ function App() {
       amount: "200",
     },
   ];
+  const [allData, setAllData] = useState(data);
+
+  const newExpenseMapToExpense = (newExpense) => {
+    const date = newExpense.date.split("-");
+    return {
+      uuid: uuidv4(),
+      date: {
+        year: date[0],
+        month: date[1],
+        day: date[2],
+      },
+      category: newExpense.title,
+      amount: newExpense.data,
+    };
+  };
+
+  const handleFormSubmit = (event, newExpense) => {
+    event.preventDefault();
+    const list = allData.concat(newExpenseMapToExpense(newExpense));
+    setAllData(list);
+  };
+
   return (
     <div className="App">
-      <ExpenseItemList data={data} />
+      <ExpenseForm handleSubmit={handleFormSubmit} />
+      <ExpenseItemList data={allData} />
     </div>
   );
 }
