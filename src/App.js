@@ -43,7 +43,7 @@ function App() {
 
   const handleFormSubmit = (event, newExpense) => {
     event.preventDefault();
-    const list = allData.concat(newExpenseMapToExpense(newExpense));
+    const list = [newExpenseMapToExpense(newExpense), ...allData];
     setAllData(list);
   };
 

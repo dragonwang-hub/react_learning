@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = (props) => {
-  const [formData, setFormData] = useState({
+  const initValue = {
     title: "",
-    amount: 0,
-    date: "2022-08-22",
-  });
+    amount: "",
+    date: "",
+  };
+
+  const [formData, setFormData] = useState(initValue);
 
   const handleChange = (event) => {
     const name = event.target.id;
@@ -19,7 +21,10 @@ const ExpenseForm = (props) => {
     <div className="new-expense">
       <form
         className="new-expense__controls"
-        onSubmit={(event) => props.handleSubmit(event, formData)} // 使用onSubmit event应当阻止其事件的默认行为，否则将会在url后增加?符号，导致多次刷新页面
+        onSubmit={(event) => {
+          setFormData(initValue);
+          props.handleSubmit(event, formData);
+        }} // 使用onSubmit event应当阻止其事件的默认行为，否则将会在url后增加?符号，导致多次刷新页面
       >
         <div className="new-expense__control">
           <label htmlFor="title">Title</label>
