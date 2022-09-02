@@ -5,6 +5,7 @@ import ExpenseFilter from "./ExpenseFilter";
 
 const ExpenseItemList = (props) => {
   const [selectedYear, setSelectedYear] = useState(2022);
+  const [data, setData] = useState([]);
 
   const handleYearChange = (value) => {
     setSelectedYear(value);
@@ -12,9 +13,8 @@ const ExpenseItemList = (props) => {
 
   useEffect(() => {
     console.log("current selected year is:", selectedYear);
+    setData(props.data.filter((item) => item.date.year == selectedYear));
   }, [selectedYear]);
-
-  const data = props.data.filter((item) => item.date.year == selectedYear);
 
   return (
     <div className="expenses">
