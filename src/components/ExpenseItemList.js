@@ -2,23 +2,21 @@ import React, { useState, useEffect } from "react";
 import ExpenseItem from "./ExpenseItem";
 import "./ExpenseItemList.css";
 import ExpenseFilter from "./ExpenseFilter";
+import ExpenseChart from "./ExpenseChart";
 
 const ExpenseItemList = (props) => {
   const [selectedYear, setSelectedYear] = useState(2022);
-  const [data, setData] = useState([]);
 
   const handleYearChange = (value) => {
     setSelectedYear(value);
   };
 
-  useEffect(() => {
-    console.log("current selected year is:", selectedYear);
-    setData(props.data.filter((item) => item.date.year == selectedYear));
-  }, [selectedYear]);
+  const data = props.data.filter((item) => item.date.year == selectedYear);
 
   return (
     <div className="expenses">
       <ExpenseFilter handleYearChange={handleYearChange} />
+      <ExpenseChart dataByYear={data}/>
       {data.length > 0 ? (
         data.map((item) => <ExpenseItem key={item.uuid} item={item} />)
       ) : (
