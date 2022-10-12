@@ -36,7 +36,6 @@ const ExpenseChart = (props) => {
 
   return (
     <div className="chart">
-      {console.log("--->", amountPercentageByMonth)}
       {amountPercentageByMonth.map((item) => (
         <ChartBar key={uuidv4()} data={item} max={max}/>
       ))}

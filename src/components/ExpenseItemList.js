@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ExpenseItem from "./ExpenseItem";
 import "./ExpenseItemList.css";
 import ExpenseFilter from "./ExpenseFilter";

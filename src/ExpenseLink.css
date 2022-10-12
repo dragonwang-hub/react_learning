@@ -1,0 +1,32 @@
+ul {
+  list-style-type: none;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(180, 242, 240);
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.title {
+  font-size: 30px;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
+}
+
+.origin {
+  text-decoration: none;
+  color: red;
+}
+
+.selected {
+  color: blue;
+}

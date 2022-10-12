@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import ExpenseLink from "./ExpenseLink";
 import ExpenseItemList from "./components/ExpenseItemList";
 import "./App.css";
 import ExpenseForm from "./components/ExpenseForm";
@@ -28,19 +30,19 @@ function App() {
   const [allData, setAllData] = useState(data);
 
   const months = {
-    '01': 'Jan',
-    '02': 'Feb',
-    '03': 'Mar',
-    '04': 'Apr',
-    '05': 'May',
-    '06': 'Jun',
-    '07': 'Jul',
-    '08': 'Aug',
-    '09': 'Sep',
-    '10': 'Oct',
-    '11': 'Nov',
-    '12': 'Dec',
-  }
+    "01": "Jan",
+    "02": "Feb",
+    "03": "Mar",
+    "04": "Apr",
+    "05": "May",
+    "06": "Jun",
+    "07": "Jul",
+    "08": "Aug",
+    "09": "Sep",
+    10: "Oct",
+    11: "Nov",
+    12: "Dec",
+  };
 
   const newExpenseMapToExpense = (newExpense) => {
     const date = newExpense.date.split("-");
@@ -64,8 +66,22 @@ function App() {
 
   return (
     <div className="App">
-      <ExpenseForm handleSubmit={handleFormSubmit} />
-      <ExpenseItemList data={allData} />
+      <Router>
+        <ExpenseLink />
+        <Routes>
+          <Route exact path="/" element={<Navigate replace to="/" />} />
+          <Route
+            exact
+            path="expenses"
+            element={<ExpenseItemList data={allData} />}
+          />
+          <Route
+            exact
+            path="new-expense"
+            element={<ExpenseForm handleSubmit={handleFormSubmit} />}
+          />
+        </Routes>
+      </Router>
     </div>
   );
 }
