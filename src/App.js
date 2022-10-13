@@ -69,7 +69,7 @@ function App() {
       <Router>
         <ExpenseLink />
         <Routes>
-          <Route exact path="/" element={<Navigate replace to="/" />} />
+          <Route exact path="/" element={<Navigate replace to="/expenses" />} />
           <Route
             exact
             path="expenses"
